@@ -1,0 +1,51 @@
+body {
+	padding-top: 70px;
+}
+
+#social-buttons button {
+	color: white;
+}
+
+.jumbotron .form-group {
+    line-height: 1em;
+}
+
+@media (min-width: 768px)
+.form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.btn-twitter {
+	background-color: #00acee;
+	border-color: #009ad5;
+}
+
+.btn-facebook {
+	background-color: #4868ac;
+	border-color: #314776;
+}
+
+.btn-pinterest {
+	background-color: #b62f26;
+	border-color: #b62f26;
+}
+
+.nav.navbar-nav {
+	float: right;
+}
+
+
+.jumbotron {
+	min-height: 600px;
+	background: url('/Users/edytawrobel/Documents/CFG2015/coding_course/bootstrap_exercise-master/images/fruit-and-veg.png');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#mission {
+	background-color: rgba(32,35,41,0.9);
+	color: #ddd;
+}
+
