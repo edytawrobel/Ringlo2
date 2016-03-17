@@ -84,5 +84,9 @@ def send():
 
     # import pdb; pdb.set_trace()
 
+@app.route("/dataanalysis")
+def dataAnalysis():
+    return render_template("dataanalysis.html") #Police UI Data Analysis Page
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -4,6 +4,7 @@
 /* 3. Body                                  */
 /* 4. Footer                                */
 /* 5. Media Queries                         */
+/* 6. Data Analysis                         */
 /* ---------------------------------------  */
 
 /* -----------------------
@@ -667,4 +668,30 @@ blockquote {
   font-size: 1.25em;
   line-height: 20px !important;
 }
+}
+
+/* -----------------------
+6. Data Analysis
+------------------------*/
+
+h2 {
+  text-align: center;
+}
+
+h5 {
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: -40px;
+}
+
+table, th, tr, td {
+  border: 1px solid gray;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#searching {
+  padding-bottom: 20px;
+  text-align: center;
 }
