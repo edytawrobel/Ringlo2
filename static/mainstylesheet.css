@@ -5,6 +5,7 @@
 /* 4. Footer                                */
 /* 5. Media Queries                         */
 /* 6. Data Analysis                         */
+/* 7. Newsletter signup                     */
 /* ---------------------------------------  */
 
 /* -----------------------
@@ -695,3 +696,24 @@ table, th, tr, td {
   padding-bottom: 20px;
   text-align: center;
 }
+
+/* -----------------------
+7. Signup Newsletter
+------------------------*/
+
+.jumbotron {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: white;
+}
+
+/* for 'thank you' and 'message sent'*/
+.thanks, .back, .data {
+  text-align: center;
+  font-size: 20px;
+}
+
+.set {
+  background-color: #ccfff5;
+}
+

@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from twilio.rest import TwilioRestClient
 import csv
+import requests
+
 app = Flask(__name__)
 
 @app.route("/landingPage")
@@ -40,7 +42,7 @@ def signup():
 
     requests.post(
         "https://api.mailgun.net/v3/sandbox4b9b1d94381b48b4b05732cffa0da0ac.mailgun.org/messages",
-        auth=("api", "key-6c19c1c364273bc85bb70777ef854618"),
+        auth=("api", "key-79dff1cbbecadfc27a0684b7c83e576c"),
         data={"from": "Ringlo Team <postmaster@sandbox4b9b1d94381b48b4b05732cffa0da0ac.mailgun.org>",
               "to": "User <"+_sendTo+">",
               "subject": "Newsletter Signup",
