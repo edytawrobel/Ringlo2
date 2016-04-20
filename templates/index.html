@@ -67,10 +67,14 @@
                     <p>Press the button just once, and a prepared text is sent to 3 friends and family of your choice.</p>
                     <br>
                     <br>
-                    <form class="form-signin" method="POST" action="/send">
-
+                    <form class="form-signin" method="POST" action="/messagesent">
                     <input type="submit" class="btn btn-danger" value="Send" />
                     </form>
+
+                    <form class="form-signin" action="/dataanalysis">
+                    <input type="submit" class="btn btn-default" value="Police UI Data Analysis" />
+                    </form>
+
                 </div>
                 <div class="col-sm-6 section-1-img"><img src="../static/images/ringlo-slide-features/section-1-img.png" class="img-responsive"/></div>
             </div>
@@ -90,7 +94,6 @@
                     <br>
                     <br>
                     <br>
-                    <button type="button" class="btn btn-danger">Send</button>
                   </div>
                 <div class="col-sm-8 section-2-img">
                     <img src="../static/images/ringlo-slide-features/section-2-img.png" class="img-responsive"/>
@@ -111,9 +114,6 @@
                         </p>
                         <br>
                         <br>
-
-                        <input type="submit" class="btn btn-danger" value="Send" />
-                        </form>
                     </div>
                     <div class="col-sm-7 section-3-img">
                         <img src="../static/images/ringlo-slide-features/section-3-img.png">
@@ -225,7 +225,7 @@
                     <div class="newsletter-info">
                         <span class="newsletter-info-msg"></span>
                     </div>
-                    <form class="newsletter-signup form-inline" action="/app/newsletter-signup" method="POST">
+                    <form class="newsletter-signup form-inline" action="/signup" method="POST">
                         <input type="hidden" name="redir" value="/">
 
                         <div class="form-group newsletter-input">

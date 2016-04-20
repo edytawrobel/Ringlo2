@@ -1,25 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Ringlo - wearable technology</title>
-    <!-- Bootstrap -->
-    <!-- <link href="templates/dist/css/bootstrap.css" rel="stylesheet"> -->
-    <!-- <link href="templates/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- Main CSS file -->
-    <link rel="stylesheet" type="text/css" href="../static/mainstylesheet.css"/>
-
-    <!-- added the messagesentchra.css doc here-->
-    <link rel="stylesheet" type="text/css" href="messagesentchra.css"/>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- <script src="dist/js/bootstrap.min.js"></script> -->
-  </head>
-  <body>
+<head>
+  <script src="../static/scripts/jquery.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="table.css"/>
+  <link rel="stylesheet" type="text/css" href="../static/mainstylesheet.css"/>
+  <title> Ringlo Data Analysis</title>
+</head>
+<body>
 <!-- HEADER -->
     <header id="header">
     <nav class="navbar st-navbar navbar-fixed-top">
@@ -38,27 +27,41 @@
     </div><!-- /.container -->
     </nav>
     </header>
-      <div class='set'>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p class="thanks">Thank you, {{name}} for signing up to our newsletter!</p>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p class="back"><a href="/landingPage">Back to homepage</a></p>
-      <br>
-      <br>
-      <br>
-      <br>
-      </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  <h2>Ringlo Text Data Analysis</h2>
+  <h5>Location Data</h5>
+  <div id="piechart"></div>
+  <div id='searching'>
+    <input type="search" class="light-table-filter" data-table="order-table" placeholder="Type to filter results">
+  </div>
+
+  <table class="order-table table">
+  <tr>
+    <th>Date</th>
+    <th>Message</th>
+    <th>Sender</th>
+    <th>Recipient</th>
+  </tr>
+
+  {% for element in grid %}
+    <tr>
+    <td>{{element['date_sent']}}</td>
+    <td>{{element['body']}}</td>
+    <td>{{element['from_']}}</td>
+    <td>{{element['to']}}</td>
+    </tr>
+  {% endfor %}
+
+
+
+
+
+  </table>
+<br>
 <!-- included footer here-->
     <footer id="footer">
       <div class="container">
@@ -90,12 +93,14 @@
       <form class="newsletter-signup form-inline" action="/app/newsletter-signup" method="POST">
       <input type="hidden" name="redir" value="/">
       <div class="form-group newsletter-input">
-
-      </div><button type="submit" class="btn btn-info">Sign up</button>
+      <label for="id_email_signup" class="sr-only">enter your email</label>
+      <input type="text" class="form-control" id="id_email_signup" name="email" placeholder="Enter your email">
+      </div><button type="submit" class="btn btn-info">Submit</button>
       </form>
       </div>
       </div> <!-- END row -->
       </div> <!-- END container -->
     </footer>
-  </body>
+</body>
+<script src="../static/scripts/js.js"></script>
 </html>
