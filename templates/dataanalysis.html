@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+  <script src="../static/scripts/jquery.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="table.css"/>
+  <link rel="stylesheet" type="text/css" href="../static/mainstylesheet.css"/>
+  <title> Ringlo Data Analysis</title>
+</head>
+<body>
+<!-- HEADER -->
+    <header id="header">
+    <nav class="navbar st-navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <a class="brand" href="index.html">
+      <img id="logo-image" src="../static/images/ringlo-logo.png" alt="ringlo-logo">
+      </a>
+      </div>
+      <div class="collapse navbar-collapse" id="st-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#header">SHOP</a></li>
+      <li><img id="shop-icon" src="../static/images/shopIcon.png" alt="shop-icon">
+      </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+    </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  <h2>Ringlo Text Data Analysis</h2>
+  <h5>Location Data</h5>
+  <div id="piechart"></div>
+  <div id='searching'>
+    <input type="search" class="light-table-filter" data-table="order-table" placeholder="Type to filter results">
+  </div>
+
+  <table class="order-table table">
+  <tr>
+    <th>Date</th>
+    <th>Message</th>
+    <th>Sender</th>
+    <th>Recipient</th>
+  </tr>
+
+  {% for element in grid %}
+    <tr>
+    <td>{{element['date_sent']}}</td>
+    <td>{{element['body']}}</td>
+    <td>{{element['from_']}}</td>
+    <td>{{element['to']}}</td>
+    </tr>
+  {% endfor %}
+
+
+
+
+
+  </table>
+<br>
+<!-- included footer here-->
+    <footer id="footer">
+      <div class="container">
+      <div class="row">
+  <!-- About us -->
+      <div class="col-sm-4 footer-column-1">
+      <span class="title-section">Find out more:</span>
+      <ul class="footer-items footer-items-1">
+      <li><a href="/setup">About Us</a></li>
+      <li><a href="/setup">Ringlo Setup</a></li>
+      <li><a href="/faq">Help / FAQ</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+      </div>
+  <!-- App download -->
+      <div class="col-sm-4 app-download">
+      <span class="title-section">Download Our App</span>
+      <ul class="footer-items footer-items-dls">
+      <li><a href="#"><img src="../static/images/social/apple.png"></a></li>
+      <li><a href="#"><img src="../static/images/social/android.png"></a></li>
+      </ul>
+      </div>
+  <!-- Subscription -->
+      <div class="col-sm-4 footer-items footer-column-contact footer-right">
+      <span class="title-section">Sharing is caring!</span>
+      <div class="newsletter-info">
+      <span class="newsletter-info-msg"></span>
+      </div>
+      <form class="newsletter-signup form-inline" action="/app/newsletter-signup" method="POST">
+      <input type="hidden" name="redir" value="/">
+      <div class="form-group newsletter-input">
+      <label for="id_email_signup" class="sr-only">enter your email</label>
+      <input type="text" class="form-control" id="id_email_signup" name="email" placeholder="Enter your email">
+      </div><button type="submit" class="btn btn-info">Submit</button>
+      </form>
+      </div>
+      </div> <!-- END row -->
+      </div> <!-- END container -->
+    </footer>
+</body>
+<script src="../static/scripts/js.js"></script>
+</html>
