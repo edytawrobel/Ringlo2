@@ -45,7 +45,7 @@
       <h2>Newsletter Signup Form</h2>
       <!-- <form class="form-signin" method="GET" action="/signup"> -->
       <!--labels are redundant-->
-      <form class="form-sendEmail" method="GET" action="/thankYou">
+      <form class="form-sendEmail" method="POST" action="/thankYou">
         <label for="inputName" class="sr-only">What is your name?</label>
         <input type="name" value="" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
         <br>
@@ -54,6 +54,9 @@
         <br>
         <label for="inputCity" class="sr-only">What city are you from?</label>
         <input type="text" value="" name="inputCity" id="inputCity" class="form-control" placeholder="City" required>
+        <br>
+        <label for="inputSeason" class="sr-only">What season is it now?</label>
+        <input type="text" value="" name="inputSeason" id="inputSeason" class="form-control" placeholder="Season" required>
         <br>
         <input id="sendEmail" type="submit" class="btn btn-lg btn-primary btn-block" value="Send email" />
         <!-- <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button> -->

@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from twilio.rest import TwilioRestClient
 import csv
 import requests
+import json
+import urllib
 
 app = Flask(__name__)
 
@@ -14,6 +16,10 @@ def landingPage():
 def signup():
     return render_template('signup.html')
 
+
+@app.route("/thankYou", methods=['POST'])
+def thankYou():
+
     global _name
     global _email
     global _city
@@ -24,7 +30,7 @@ def signup():
     _name = request.form['inputName']
     _email = request.form['inputEmail']
     _city = request.form['inputCity']
-    _animal = request.form['inputSeason']
+    _season = request.form['inputSeason']
 
 
     # Giphy https://github.com/Giphy/GiphyAPI
@@ -40,11 +46,11 @@ def signup():
 
     _sendTo = request.form['inputEmail']
 
-    requests.post(
-        "https://api.mailgun.net/v3/sandbox4b9b1d94381b48b4b05732cffa0da0ac.mailgun.org/messages",
+    req = requests.post(
+        "https://api.mailgun.net/v3/sandboxe8185892477b4f77bfa603cb9a41c23a.mailgun.org/messages",
         auth=("api", "key-79dff1cbbecadfc27a0684b7c83e576c"),
-        data={"from": "Ringlo Team <postmaster@sandbox4b9b1d94381b48b4b05732cffa0da0ac.mailgun.org>",
-              "to": "User <"+_sendTo+">",
+        data={"from": "Ringlo Team <mailgun@sandboxe8185892477b4f77bfa603cb9a41c23a.mailgun.org>",
+              "to": _sendTo,
               "subject": "Newsletter Signup",
               "html": "<iframe src="+_giphy+" width='150px' height='150px' allowFullScreen></iframe>" +
                       "This is a message from "+_name+" from "+_city+", " +
@@ -52,8 +58,8 @@ def signup():
 
     })
 
-@app.route("/thankYou")
-def thankYou():
+    print req
+
     return render_template("thankYou.html") #Confirmation page
 
 @app.route("/messagesent", methods=['POST'])
@@ -74,12 +80,14 @@ def send():
 
     # writes all the sms messages into a csv file
     with open('my_smslist.csv', 'w') as f:
-        writer = csv.writer(f)
+
+        writer = csv.DictWriter(f, fieldnames=["date_sent", "body", "from_", "to"])
+        writer.writeheader()
         for sms in smss:
-            writer.writerow([sms.date_sent, sms.body, sms.from_, sms.to])
+            writer.writerow({"date_sent": sms.date_sent, "body": sms.body, "from_": sms.from_, "to": sms.to})
             print sms.date_sent, sms.body, sms.from_, sms.to
 
-    #return render_template('messagesent.html', _name=_name)
+    return render_template('messagesent.html')
 
     #https://api.twilio.com/2010-04-01/Accounts/AC651dcd0b578ee9f523abfb0de332b948/SMS/Messages.csv?PageSize=1000
     # export the raw data of messages from twilio
@@ -88,7 +96,11 @@ def send():
 
 @app.route("/dataanalysis")
 def dataAnalysis():
-    return render_template("dataanalysis.html") #Police UI Data Analysis Page
+    with open('my_smslist.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        data = list(reader)
+    print data
+    return render_template("dataanalysis.html", grid=data) #Police UI Data Analysis Page
 
 if __name__ == "__main__":
     app.run(debug=True)

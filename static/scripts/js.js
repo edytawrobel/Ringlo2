@@ -102,8 +102,6 @@ function social () {
 	});
 }
 
-$('.table').append('<tr>new row <td>new date</td> <td>new message</td> <td>new sender</td> <td>new recipient</td> <td>new location</td> </tr>');
-
 /* for piechart*/
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);

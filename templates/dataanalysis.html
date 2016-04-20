@@ -38,42 +38,28 @@
   <div id='searching'>
     <input type="search" class="light-table-filter" data-table="order-table" placeholder="Type to filter results">
   </div>
+
   <table class="order-table table">
   <tr>
     <th>Date</th>
     <th>Message</th>
     <th>Sender</th>
     <th>Recipient</th>
-    <th>Location</th>
   </tr>
-  <tr>
-    <td>date 1</td>
-    <td>content of text 1</td>
-    <td>sender 1</td>
-    <td>recipient 1</td>
-    <td>London</td>
-  </tr>
-  <tr>
-    <td>date 2</td>
-    <td>content of text 2</td>
-    <td>sender 2</td>
-    <td>recipient 2</td>
-    <td>London</td>
-  </tr>
-  <tr>
-    <td>date 3</td>
-    <td>content of text 3</td>
-    <td>sender 3</td>
-    <td>recipient 3</td>
-    <td>Manchester</td>
-  </tr>
-  <tr>
-    <td>date 4</td>
-    <td>content of text 4</td>
-    <td>sender 4</td>
-    <td>recipient 4</td>
-    <td>Birmingham</td>
-  </tr>
+
+  {% for element in grid %}
+    <tr>
+    <td>{{element['date_sent']}}</td>
+    <td>{{element['body']}}</td>
+    <td>{{element['from_']}}</td>
+    <td>{{element['to']}}</td>
+    </tr>
+  {% endfor %}
+
+
+
+
+
   </table>
 <br>
 <!-- included footer here-->
