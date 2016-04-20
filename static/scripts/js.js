@@ -17,7 +17,7 @@ function init_map() {
 	    title:"Brixton"});
 	var var_map = new google.maps.Map(document.getElementById("map-container"),
 	    var_mapoptions);
-	var_marker.setMap(var_map); 
+	var_marker.setMap(var_map);
 }
 
 
@@ -93,17 +93,72 @@ function social () {
 		$content.animate({
 		    marginLeft: '10px'
 		}, 1000);
-	}, 2000); 
+	}, 2000);
 
 	$content.find(".social-element.dots").on("click", function () {
 		$content.animate({
 		    marginLeft: '-75px'
-		}, 1000); 
+		}, 1000);
 	});
 }
 
+/* for piechart*/
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Location', 'Number of cases'],
+          ['London', 2],
+          ['Manchester', 1],
+          ['Birmingham',  1],
+        ]);
+        var options = {
+        	legend: 'none',
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
 
+/* for filter capability*/
+(function(document) {
+	'use strict';
 
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('light-table-filter');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
 
 
 
